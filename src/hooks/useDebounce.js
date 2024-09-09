@@ -1,30 +1,28 @@
-import { useRef } from "react";
+import { useRef, useCallback } from "react";
 
-const useDebounce = (dobounceDelay, onSearch) => {
-  const debounceFuncRef = useRef(debounceSearch(dobounceDelay, onSearch));
+const useDebounce = (debounceDelay, callback) => {
+  const timeoutRef = useRef(null);
+
+  const cleanTimout = useCallback(() => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+  }, []);
+
+  const debouncedCallback = useCallback(
+    (...args) => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+      timeoutRef.current = setTimeout(() => callback(...args), debounceDelay);
+    },
+    [debounceDelay, callback]
+  );
 
   return {
-    callDebounceFunction: debounceFuncRef.current,
-    clearTimout: debounceFuncRef.current.clearTimer,
+    debouncedCallback,
+    cleanTimout,
   };
-};
-
-const debounceSearch = (delay, callback) => {
-  let timeoutId;
-  function timeoutLogic(...args) {
-    if (timeoutId) {
-      clearTimeout(timeoutId);
-    }
-    timeoutId = setTimeout(() => callback(...args), delay);
-  }
-
-  timeoutLogic.clearTimer = () => {
-    if (timeoutId) {
-      clearTimeout(timeoutId);
-    }
-  };
-
-  return timeoutLogic;
 };
 
 export default useDebounce;

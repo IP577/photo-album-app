@@ -9,7 +9,6 @@ import {
 const RenderThumbnail = (props) => {
   const { filterText, data, imageNumber } = props;
 
-  debugger;
   return (
     <Section>
       <Image

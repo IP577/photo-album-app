@@ -32,6 +32,7 @@ What more would I have done if I had more time:
 2. Wanted to add the option for user to navigate between the result items using up and down arrow keys for even better accessibility, although currently same is possible via Tab and Shift + Tab.
 3. Currently only 1 error message is shown in every invalid entry case, if I had more time I wanted to give the correct error message in case user left a space accidentally, then they will see "No spaces allowed", in case of special characters they will see "No special characters can be used".
 4. Even better screen reading experience, would have liked to add image number for screen reader to read as user navigates to each list item.
+5. Include tests from jest-dom library as well to test accessibility of the components, say checking the alt text on image
 
 App Usage Instructions
 
