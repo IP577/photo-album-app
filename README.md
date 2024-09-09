@@ -1,6 +1,8 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Run the below script to install all packages mentioned in package.json
+
+### `npm install`
 
 ## Available Scripts
 
@@ -14,57 +16,27 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
-### `npm test`
+### `npm run test -- --watchAll=false --coverage`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Runs all available test suits and show the coverage of each file at the end
 
-### `npm run build`
+I have covered most files but if I had more time would've tried to go for 100% coverage in each one
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+ASSUMPTIONS:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. I assumed that I don't have an API which would take a string as query or url parameter and return filtered images/items
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+What more would I have done if I had more time:
 
-### `npm run eject`
+1. Would have aimed to add separate tests for both custom hooks, also I have not covered content.jsx since time was limited and all it's child components are already tested with every scenario .
+2. Wanted to add the option for user to navigate between the result items using up and down arrow keys for even better accessibility, although currently same is possible via Tab and Shift + Tab.
+3. Currently only 1 error message is shown in every invalid entry case, if I had more time I wanted to give the correct error message in case user left a space accidentally, then they will see "No spaces allowed", in case of special characters they will see "No special characters can be used".
+4. Even better screen reading experience, would have liked to add image number for screen reader to read as user navigates to each list item.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+App Usage Instructions
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. Just start typing in the search box and wait for 500ms for results to populate, since debouncing is implemented.
+2. You can change the default time of debounce by going to src\components\content\content.jsx; line number: 14: and adding a property called 'dobounceDelay' to the component 'SearchBox'.
+3. Browsing and navigation via keyboard is fully supported.
+4. alt properties and aria-labels are provided whereever necessary to encourage assistive technologies like screen readers
+5. Error handling is done such that we are not making a filter call unless the text input is valid, that means if there is a list before user types invalid text, we are retaining it.
