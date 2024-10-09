@@ -17,14 +17,14 @@ const SearchBox = (props) => {
 
   const labelVal = useRef(label.replaceAll(" ", ""));
 
-  const { callDebounceFunction, clearTimout } = useDebounce(
+  const { debouncedCallback, cleanTimout } = useDebounce(
     dobounceDelay,
     onSearch
   );
 
   useEffect(() => {
     return () => {
-      clearTimout();
+      cleanTimout();
     };
     // eslint-disable-next-line
   }, []);
@@ -34,7 +34,7 @@ const SearchBox = (props) => {
     const isValid = validateInput(value);
 
     setValue(value);
-    isValid && callDebounceFunction(value.toLowerCase());
+    isValid && debouncedCallback(value.toLowerCase());
     setError(!isValid);
   };
 

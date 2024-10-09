@@ -22,9 +22,8 @@ export const useFetch = (url) => {
       }
     } finally {
       setLoading(false);
+      controller.abort();
     }
-
-    return () => controller.abort();
   }, [url]);
 
   useEffect(() => {

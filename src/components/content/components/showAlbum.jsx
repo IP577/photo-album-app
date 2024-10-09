@@ -57,22 +57,20 @@ const ShowAlbum = (props) => {
       {filteredImages.length === 0 ? (
         <SubHeader>No photos to show!</SubHeader>
       ) : (
-        <>
-          <UnorderedList>
-            {filteredImages.map((photoDetails, index) => (
-              <ListItem
-                tabIndex={photoDetails.id}
-                key={`list-item-${photoDetails.id}`}
-              >
-                <RenderThumbnail
-                  filterText={text}
-                  data={photoDetails}
-                  imageNumber={index + 1}
-                />
-              </ListItem>
-            ))}
-          </UnorderedList>
-        </>
+        <UnorderedList>
+          {filteredImages.map((photoDetails, index) => (
+            <ListItem
+              tabIndex={photoDetails.id}
+              key={`list-item-${photoDetails.id}`}
+            >
+              <RenderThumbnail
+                filterText={text}
+                data={photoDetails}
+                imageNumber={index + 1}
+              />
+            </ListItem>
+          ))}
+        </UnorderedList>
       )}
     </section>
   );

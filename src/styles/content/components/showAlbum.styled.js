@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 const UnorderedList = styled.ul`
+  padding: 1rem;
   list-style-type: none;
 `;
 
