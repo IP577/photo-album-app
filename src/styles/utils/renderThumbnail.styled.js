@@ -1,8 +1,7 @@
 import styled from "styled-components";
 
 const Image = styled.img`
-  margin-left: 1rem;
-  margin-top: 1rem;
+  margin: 1rem;
 `;
 
 const Anchor = styled.a`
@@ -22,8 +21,7 @@ const Section = styled.section`
   flex-direction: column;
   position: relative;
   border: 3px solid #333333;
-  margin-bottom: 2rem;
-  margin-right: 2rem;
+  margin: 0.5rem 0;
   outline-offset: 2px;
   &:focus-within,
   &:hover {
